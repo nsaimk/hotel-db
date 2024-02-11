@@ -19,6 +19,8 @@ app.get('/', async (req, res) => {
     }
 })
 
-app.listen(5070, () => {
-    console.log("Server running on port 5070");
-})
+// app.listen(5070, () => {
+//     console.log("Server running on port 5070");
+// })
+
+module.exports = app;
