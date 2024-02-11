@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const itemsPool = require('./DBConfig');
+const cors = require('cors');
+
 
 app.use(express.json());
+app.use(cors());
 dotenv.config();
 
 const PORT = 5007; // Define port number
