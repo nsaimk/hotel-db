@@ -6,21 +6,26 @@ const itemsPool = require('./DBConfig');
 app.use(express.json());
 dotenv.config();
 
+const PORT = 5007; // Define port number
 
 app.get('/', async (req, res) => {
     try {
         const allItems = await itemsPool.query(
             'SELECT * FROM bookings'
         );
-        res.json({ allItems });
+        const rows = allItems.rows; 
+        res.json({ rows }); 
     } catch (error) {
         console.log(error);
-        res.status(500).send(error.message)
+        res.status(500).send(error.message);
     }
-})
+});
 
-// app.listen(5070, () => {
-//     console.log("Server running on port 5070");
-// })
 
-module.exports = app;
+console.log('Using port:', PORT); // Debugging statement
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+//module.exports = app;
